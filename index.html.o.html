@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To My Batman 🖤</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #28334d, #101827 55%, #050810);
+  color: white;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(#8ea7d9 1px, transparent 1px);
+  background-size: 80px 80px, 120px 120px;
+  opacity: .35;
+}
+
+.moon {
+  position: absolute;
+  top: 9%;
+  left: 15%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #f4f0d8;
+  box-shadow: 0 0 50px #dce5ff88;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  border: 1px solid #ffffff25;
+  border-radius: 30px;
+  background: #ffffff0b;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 60px #0008;
+}
+
+.batman {
+  font-size: 90px;
+  filter: drop-shadow(0 0 20px #f5d76e);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 27px;
+  color: #f5d76e;
+}
+
+button {
+  margin-top: 20px;
+  padding: 13px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #f5d76e;
+  color: #111827;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #f5d76e88;
+}
+
+#lovePage {
+  display: none;
+}
+
+.message {
+  margin: 18px 0;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.9;
+  color: white;
+}
+
+.small-message {
+  color: #f5d76e;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.city {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+}
+
+.building {
+  width: 45px;
+  background: #080d18;
+  border: 1px solid #25334c;
+  box-shadow: inset 0 0 15px #263653;
+}
+
+.b1 { height: 90px; }
+.b2 { height: 130px; }
+.b3 { height: 75px; }
+.b4 { height: 155px; }
+.b5 { height: 110px; }
+.b6 { height: 85px; }
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: rise 5s linear forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="moon"></div>
+
+<!-- شاشة البداية -->
+<div class="container" id="startPage">
+  <div class="batman">🦇</div>
+  <h1>Hey Batman!</h1>
+
+  <p style="margin-top:15px;color:#ddd">
+    عندي لك رسالة صغيرة...
+  </p>
+
+  <button onclick="openMessage()">
+    اضغط هنا 🖤
+  </button>
+</div>
+
+<!-- رسالة الحب -->
+<div class="container" id="lovePage">
+
+  <div class="batman">🦇</div>
+
+  <h1>To My Batman</h1>
+
+  <p class="message">
+    مواااح يا باتماني<br>
+    أحبك 🖤
+  </p>
+
+  <p class="small-message">
+    أنت بطلي 🖤
+  </p>
+
+</div>
+
+<!-- مدينة الليل -->
+<div class="city">
+  <div class="building b1"></div>
+  <div class="building b2"></div>
+  <div class="building b3"></div>
+  <div class="building b4"></div>
+  <div class="building b5"></div>
+  <div class="building b6"></div>
+</div>
+
+<script>
+function openMessage() {
+
+  document.getElementById("startPage").style.display = "none";
+  document.getElementById("lovePage").style.display = "block";
+
+  // قلوب متحركة
+  for (let i = 0; i < 35; i++) {
+
+    setTimeout(() => {
+
+      let heart = document.createElement("div");
+
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "🖤" : "💛";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+
+    }, i * 100);
+  }
+}
+</script>
+
+</body>
+</html>
